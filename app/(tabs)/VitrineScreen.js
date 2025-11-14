@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const mockProdutos = [
@@ -50,3 +50,4 @@ const styles = StyleSheet.create({
   },
   botaoTexto: { color: '#fff', textAlign: 'center' },
 });
+

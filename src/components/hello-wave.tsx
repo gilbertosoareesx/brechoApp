@@ -14,7 +14,7 @@ export function HelloWave() {
         animationDuration: '300ms',
       }}
     >
-      👋
+      44b
     </Animated.Text>
   );
 }

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Button, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-// adicione/importe seu hook de auth (ajuste o caminho se necessário)
-import { useAuth } from '../../hooks/use-auth';
+import { useAuth } from '@/hooks/use-auth';
 
 const mockEstoque = [
   { id: '1', nome: 'Vestido Floral', preco: 49.99, quantidade: 3, ownerId: '1' },
@@ -10,7 +9,6 @@ const mockEstoque = [
 ];
 
 export default function EstoqueScreen() {
-  // useAuth deve retornar { currentUser }
   const { currentUser } = useAuth();
 
   const [estoque, setEstoque] = useState(mockEstoque);
@@ -29,23 +27,20 @@ export default function EstoqueScreen() {
       nome: 'Nova peça',
       preco: 0,
       quantidade: 1,
-      ownerId: currentUser ? currentUser.id : null, // atribui dono ao criar
+      ownerId: currentUser ? currentUser.id : null,
     };
     setEstoque((prev) => [novo, ...prev]);
   };
 
-  // adicionar função de deletar
   const handleDeletar = (id) => {
     setEstoque((prev) => prev.filter((item) => item.id !== id));
   };
 
-  // substituir canEditOrDelete por isto (apenas admin)
   const canEditOrDelete = (item) => {
     if (!currentUser) return false;
     return currentUser.role === 'admin';
   };
 
-  // substituir renderItem por incluir botão Deletar e calcular 'allowed' uma vez
   const renderItem = ({ item }) => {
     const allowed = canEditOrDelete(item);
     return (
@@ -82,7 +77,6 @@ export default function EstoqueScreen() {
         renderItem={renderItem}
         contentContainerStyle={{ paddingBottom: 20 }}
       />
-      {/* opcional: desabilitar adicionar para usuários sem permissão */}
       {currentUser && currentUser.role === 'admin' && (
         <Button title="Adicionar nova peça" onPress={handleAdicionar} />
       )}
@@ -101,3 +95,4 @@ const styles = StyleSheet.create({
   botaoTextoDisabled: { color: '#666' },
   deleteButton: { backgroundColor: '#b00', marginTop: 8 },
 });
+

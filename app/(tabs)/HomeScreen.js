@@ -8,13 +8,13 @@ export default function HomeScreen() {
     <View style={styles.container}>
       <Text style={styles.title}>Meu Brechó</Text>
 
-      <TouchableOpacity style={styles.loginButton} onPress={() => router.push('/LoginScreen')}>
+      <TouchableOpacity style={styles.loginButton} onPress={() => router.push('/(tabs)/LoginScreen')}>
         <Text style={styles.buttonText}>Ir para Login</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
         style={styles.registerButton}
-        onPress={() => router.push('/RegisterScreen')}
+        onPress={() => router.push('/(tabs)/RegisterScreen')}
       >
         <Text style={styles.buttonText}>Ir para Cadastro</Text>
       </TouchableOpacity>
@@ -27,11 +27,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     justifyContent: 'center',
-    alignItems: 'center',
     padding: 20,
   },
   title: { fontSize: 32, fontWeight: 'bold', color: '#7361B0', marginBottom: 50 },
   loginButton: {
+    width: '100%',
     backgroundColor: '#311498',
     paddingVertical: 15,
     paddingHorizontal: 60,
@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   registerButton: {
+    width: '100%',
     backgroundColor: '#7361B0',
     paddingVertical: 15,
     paddingHorizontal: 60,
